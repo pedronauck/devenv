@@ -3,31 +3,31 @@
 path=$(pwd)
 
 # dependencies
-# brew install nvm neofetch htop wget node neovim ripgrep tmux lua fzf fd exa bat zoxide ffmpeg lazygit tree-sitter
+brew install nvm neofetch htop wget node neovim ripgrep tmux lua fzf fd exa bat zoxide ffmpeg lazygit tree-sitter
 
 # rust
-# curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # fish
-# ln -s $path/fish ~/.config/fish
+ln -sf $path/fish ~/.config/fish
 
 # neovim
-# mkdir -p ~/.config
-# ln -s $path/nvim ~/.config/nvim
-# ln -s $path/lazyvim ~/.config/lazyvim
+mkdir -p ~/.config
+ln -sf $path/nvim ~/.config/nvim
+ln -sf $path/lazyvim ~/.config/lazyvim
 
 # zellij
-# ln -s $path/zellij ~/.config/zellij
-# cargo install --locked zellij
+ln -sf $path/zellij ~/.config/zellij
+cargo install --locked zellij
 
 # tmux
-ln -s $path/tmux/.tmux.conf ~/.tmux.conf
-# git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+ln -sf $path/tmux/.tmux.conf ~/.tmux.conf
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # fzf
 $(brew --prefix)/opt/fzf/install
 
 # bat
 mkdir -p "$(bat --config-dir)/themes"
-ln -s $path/bat/*.tmTheme ~/.config/bat/themes
+ln -sf $path/bat/*.tmTheme ~/.config/bat/themes
 bat cache --build
