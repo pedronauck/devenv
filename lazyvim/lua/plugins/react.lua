@@ -1,5 +1,5 @@
 return {
-	{ "alvan/vim-closetag" },
-	{ "windwp/nvim-autopairs" },
-	{ "windwp/nvim-ts-autotag" },
+	{ "alvan/vim-closetag", event = "VeryLazy" },
+	{ "windwp/nvim-autopairs", event = "VeryLazy" },
+	{ "windwp/nvim-ts-autotag", event = "VeryLazy" },
 }

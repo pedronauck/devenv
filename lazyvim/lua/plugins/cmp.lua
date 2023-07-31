@@ -19,6 +19,17 @@ return {
 		local luasnip = require("luasnip")
 		local cmp = require("cmp")
 
+		opts.snippet = {
+			expand = function(args)
+				require("luasnip").lsp_expand(args.body)
+				require("luasnip.loaders.from_vscode").load({ paths = "~/.config/nvim/snippets" })
+			end,
+		}
+
+		opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {
+			{ name = "emoji" },
+		}))
+
 		opts.mapping = vim.tbl_extend("force", opts.mapping, {
 			["<C-a>"] = cmp.mapping.complete(),
 			["<PageUp>"] = cmp.mapping(function(fallback)

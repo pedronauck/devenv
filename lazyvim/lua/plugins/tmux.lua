@@ -1,16 +1,19 @@
 return {
 	{
-		"alexghergh/nvim-tmux-navigation",
+		"aserowy/tmux.nvim",
 		config = function()
-			require("nvim-tmux-navigation").setup({
-				disable_when_zoomed = true, -- defaults to false
-				keybindings = {
-					left = "<M-h>",
-					down = "<M-j>",
-					up = "<M-k>",
-					right = "<M-l>",
-					last_active = "<M-\\>",
-					next = "<M-Space>",
+			return require("tmux").setup({
+				copy_sync = {
+					redirect_to_clipboard = true,
+				},
+				navigation = {
+					enable_default_keybindings = false,
+					persist_zoom = true,
+				},
+				resize = {
+					enable_default_keybindings = false,
+					resize_step_x = 10,
+					resize_step_y = 10,
 				},
 			})
 		end,

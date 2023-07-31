@@ -119,7 +119,7 @@
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
@@ -127,7 +127,12 @@
 
 [commit]
 	template = /Users/pedronauck/.stCommitMsg
+
 [pull]
 	rebase = false
+
 [core]
 	excludesfile = /Users/pedronauck/.gitignore_global
+
+[push]
+  autoSetupRemote = true

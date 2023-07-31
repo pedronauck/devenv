@@ -26,23 +26,23 @@ complete -c forc -n "__fish_seen_subcommand_from addr2line" -s v -l verbose -d '
 complete -c forc -n "__fish_seen_subcommand_from addr2line" -s s -l silent -d 'Silence all output'
 complete -c forc -n "__fish_seen_subcommand_from build" -s p -l path -d 'Path to the project, if not specified, current working directory will be used' -r
 complete -c forc -n "__fish_seen_subcommand_from build" -l output-directory -d 'The directory in which the sway compiler output artifacts are placed' -r
+complete -c forc -n "__fish_seen_subcommand_from build" -s o -l output-bin -d 'If set, outputs a binary file representing the script bytes' -r
+complete -c forc -n "__fish_seen_subcommand_from build" -s g -l output-debug -d 'If set, outputs source file mapping in JSON format' -r
+complete -c forc -n "__fish_seen_subcommand_from build" -l build-profile -d 'Name of the build profile to use' -r
 complete -c forc -n "__fish_seen_subcommand_from build" -l build-target -d 'Build target to use for code generation' -r -f -a "{fuel	,evm	}"
-complete -c forc -n "__fish_seen_subcommand_from build" -l build-profile -d 'Name of the build profile to use. If it is not specified, forc will use debug build profile' -r
-complete -c forc -n "__fish_seen_subcommand_from build" -s o -d 'If set, outputs a binary file representing the script bytes' -r
-complete -c forc -n "__fish_seen_subcommand_from build" -s g -l debug-outfile -d 'If set, outputs source file mapping in JSON format' -r
 complete -c forc -n "__fish_seen_subcommand_from build" -s L -l log-level -d 'Set the log level' -r
-complete -c forc -n "__fish_seen_subcommand_from build" -l print-ast -d 'Print the generated Sway AST (Abstract Syntax Tree)'
-complete -c forc -n "__fish_seen_subcommand_from build" -l print-dca-graph -d 'Print the computed Sway DCA graph'
-complete -c forc -n "__fish_seen_subcommand_from build" -l print-finalized-asm -d 'Print the finalized ASM'
-complete -c forc -n "__fish_seen_subcommand_from build" -l print-intermediate-asm -d 'Print the generated ASM'
-complete -c forc -n "__fish_seen_subcommand_from build" -l print-ir -d 'Print the generated Sway IR (Intermediate Representation)'
 complete -c forc -n "__fish_seen_subcommand_from build" -l offline -d 'Offline mode, prevents Forc from using the network when managing dependencies. Meaning it will only try to use previously downloaded dependencies'
 complete -c forc -n "__fish_seen_subcommand_from build" -s t -l terse -d 'Terse mode. Limited warning and error output'
-complete -c forc -n "__fish_seen_subcommand_from build" -l minify-json-abi -d 'By default the JSON for ABIs is formatted for human readability. By using this option JSON output will be "minified", i.e. all on one line without whitespace'
-complete -c forc -n "__fish_seen_subcommand_from build" -l minify-json-storage-slots -d 'By default the JSON for initial storage slots is formatted for human readability. By using this option JSON output will be "minified", i.e. all on one line without whitespace'
 complete -c forc -n "__fish_seen_subcommand_from build" -l locked -d 'Requires that the Forc.lock file is up-to-date. If the lock file is missing, or it needs to be updated, Forc will exit with an error'
-complete -c forc -n "__fish_seen_subcommand_from build" -l release -d 'Use release build plan. If a custom release plan is not specified, it is implicitly added to the manifest file'
+complete -c forc -n "__fish_seen_subcommand_from build" -l ast -d 'Print the generated Sway AST (Abstract Syntax Tree)'
+complete -c forc -n "__fish_seen_subcommand_from build" -l dca-graph -d 'Print the computed Sway DCA graph'
+complete -c forc -n "__fish_seen_subcommand_from build" -l finalized-asm -d 'Print the finalized ASM'
+complete -c forc -n "__fish_seen_subcommand_from build" -l intermediate-asm -d 'Print the generated ASM'
+complete -c forc -n "__fish_seen_subcommand_from build" -l ir -d 'Print the generated Sway IR (Intermediate Representation)'
 complete -c forc -n "__fish_seen_subcommand_from build" -l time-phases -d 'Output the time elapsed over each part of the compilation process'
+complete -c forc -n "__fish_seen_subcommand_from build" -l json-abi -d 'By default the JSON for ABIs is formatted for human readability. By using this option JSON output will be "minified", i.e. all on one line without whitespace'
+complete -c forc -n "__fish_seen_subcommand_from build" -l json-storage-slots -d 'By default the JSON for initial storage slots is formatted for human readability. By using this option JSON output will be "minified", i.e. all on one line without whitespace'
+complete -c forc -n "__fish_seen_subcommand_from build" -l release -d 'Use release build plan. If a custom release plan is not specified, it is implicitly added to the manifest file'
 complete -c forc -n "__fish_seen_subcommand_from build" -l tests -d 'Also build all tests within the project'
 complete -c forc -n "__fish_seen_subcommand_from build" -s h -l help -d 'Print help information'
 complete -c forc -n "__fish_seen_subcommand_from build" -s v -l verbose -d 'Use verbose output'
@@ -93,23 +93,25 @@ complete -c forc -n "__fish_seen_subcommand_from parse-bytecode" -s v -l verbose
 complete -c forc -n "__fish_seen_subcommand_from parse-bytecode" -s s -l silent -d 'Silence all output'
 complete -c forc -n "__fish_seen_subcommand_from test" -s p -l path -d 'Path to the project, if not specified, current working directory will be used' -r
 complete -c forc -n "__fish_seen_subcommand_from test" -l output-directory -d 'The directory in which the sway compiler output artifacts are placed' -r
+complete -c forc -n "__fish_seen_subcommand_from test" -s o -l output-bin -d 'If set, outputs a binary file representing the script bytes' -r
+complete -c forc -n "__fish_seen_subcommand_from test" -s g -l output-debug -d 'If set, outputs source file mapping in JSON format' -r
+complete -c forc -n "__fish_seen_subcommand_from test" -l build-profile -d 'Name of the build profile to use' -r
 complete -c forc -n "__fish_seen_subcommand_from test" -l build-target -d 'Build target to use for code generation' -r -f -a "{fuel	,evm	}"
-complete -c forc -n "__fish_seen_subcommand_from test" -l build-profile -d 'Name of the build profile to use. If it is not specified, forc will use debug build profile' -r
-complete -c forc -n "__fish_seen_subcommand_from test" -s o -d 'If set, outputs a binary file representing the script bytes' -r
-complete -c forc -n "__fish_seen_subcommand_from test" -s g -l debug-outfile -d 'If set, outputs source file mapping in JSON format' -r
 complete -c forc -n "__fish_seen_subcommand_from test" -s L -l log-level -d 'Set the log level' -r
-complete -c forc -n "__fish_seen_subcommand_from test" -l print-ast -d 'Print the generated Sway AST (Abstract Syntax Tree)'
-complete -c forc -n "__fish_seen_subcommand_from test" -l print-dca-graph -d 'Print the computed Sway DCA graph'
-complete -c forc -n "__fish_seen_subcommand_from test" -l print-finalized-asm -d 'Print the finalized ASM'
-complete -c forc -n "__fish_seen_subcommand_from test" -l print-intermediate-asm -d 'Print the generated ASM'
-complete -c forc -n "__fish_seen_subcommand_from test" -l print-ir -d 'Print the generated Sway IR (Intermediate Representation)'
 complete -c forc -n "__fish_seen_subcommand_from test" -l offline -d 'Offline mode, prevents Forc from using the network when managing dependencies. Meaning it will only try to use previously downloaded dependencies'
 complete -c forc -n "__fish_seen_subcommand_from test" -s t -l terse -d 'Terse mode. Limited warning and error output'
-complete -c forc -n "__fish_seen_subcommand_from test" -l minify-json-abi -d 'By default the JSON for ABIs is formatted for human readability. By using this option JSON output will be "minified", i.e. all on one line without whitespace'
-complete -c forc -n "__fish_seen_subcommand_from test" -l minify-json-storage-slots -d 'By default the JSON for initial storage slots is formatted for human readability. By using this option JSON output will be "minified", i.e. all on one line without whitespace'
 complete -c forc -n "__fish_seen_subcommand_from test" -l locked -d 'Requires that the Forc.lock file is up-to-date. If the lock file is missing, or it needs to be updated, Forc will exit with an error'
-complete -c forc -n "__fish_seen_subcommand_from test" -l release -d 'Use release build plan. If a custom release plan is not specified, it is implicitly added to the manifest file'
+complete -c forc -n "__fish_seen_subcommand_from test" -l ast -d 'Print the generated Sway AST (Abstract Syntax Tree)'
+complete -c forc -n "__fish_seen_subcommand_from test" -l dca-graph -d 'Print the computed Sway DCA graph'
+complete -c forc -n "__fish_seen_subcommand_from test" -l finalized-asm -d 'Print the finalized ASM'
+complete -c forc -n "__fish_seen_subcommand_from test" -l intermediate-asm -d 'Print the generated ASM'
+complete -c forc -n "__fish_seen_subcommand_from test" -l ir -d 'Print the generated Sway IR (Intermediate Representation)'
 complete -c forc -n "__fish_seen_subcommand_from test" -l time-phases -d 'Output the time elapsed over each part of the compilation process'
+complete -c forc -n "__fish_seen_subcommand_from test" -l json-abi -d 'By default the JSON for ABIs is formatted for human readability. By using this option JSON output will be "minified", i.e. all on one line without whitespace'
+complete -c forc -n "__fish_seen_subcommand_from test" -l json-storage-slots -d 'By default the JSON for initial storage slots is formatted for human readability. By using this option JSON output will be "minified", i.e. all on one line without whitespace'
+complete -c forc -n "__fish_seen_subcommand_from test" -l release -d 'Use release build plan. If a custom release plan is not specified, it is implicitly added to the manifest file'
+complete -c forc -n "__fish_seen_subcommand_from test" -s r -l pretty-print -d 'Pretty-print the logs emiited from tests'
+complete -c forc -n "__fish_seen_subcommand_from test" -s l -l logs -d 'Print `Log` and `LogData` receipts for tests'
 complete -c forc -n "__fish_seen_subcommand_from test" -s h -l help -d 'Print help information'
 complete -c forc -n "__fish_seen_subcommand_from test" -s v -l verbose -d 'Use verbose output'
 complete -c forc -n "__fish_seen_subcommand_from test" -s s -l silent -d 'Silence all output'

@@ -18,8 +18,14 @@ alias gud="~/.config/functions/update_deps.fish"
 alias dc="docker container prune && docker volume prune"
 alias zel="zellij --layout ~/.config/zellij/layouts/default.kdl"
 alias pm="pnpm"
+alias pmi="pnpm install"
+alias pma="pnpm add"
+alias pmr="pnpm remove"
 alias lzvim="NVIM_APPNAME=lazyvim nvim"
 alias tmux="tmux -2"
+alias tms="tmux new-session -s"
+alias la="exa -la"
+alias mtf="rm -rf **/**/node_modules; pnpm store prune; rm -rf ~/.pnpm-store; rm -rf pnpm-lock.yaml"
 
 export PATH="$HOME/.fuelup/bin:$PATH"
 export PATH="$PATH:/Users/pedronauck/.foundry/bin"
@@ -44,8 +50,17 @@ function docker_reset
     docker volume prune
 end
 
+function gb
+    set -l dir ""
+    for i in (seq 1 $argv[1])
+        set dir "$dir../"
+    end
+    cd $dir
+end
+
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+set -x PRETTIERD_DEFAULT_CONFIG "~/.config/nvim/custom/.prettierrc.json"
 
 zoxide init fish | source
