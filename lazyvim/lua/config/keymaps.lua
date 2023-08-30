@@ -1,27 +1,35 @@
+-- This file is automatically loaded by lazyvim.config.init
 local function map(mode, lhs, rhs, opts)
-  opts = opts or {}
-  opts.silent = opts.silent ~= false
-  vim.keymap.set(mode, lhs, rhs, opts)
+  local keys = require("lazy.core.handler").handlers.keys
+  ---@cast keys LazyKeysHandler
+  -- do not create the keymap if a lazy keys handler exists
+  if not keys.active[keys.parse({ lhs, mode = mode }).id] then
+    opts = opts or {}
+    opts.silent = opts.silent ~= false
+    if opts.remap and not vim.g.vscode then
+      opts.remap = nil
+    end
+    vim.keymap.set(mode, lhs, rhs, opts)
+  end
 end
 
 -- scroll and search
-map("n", "<C-u>", "<C-d>zz")
-map("n", "<C-i>", "<C-u>zz")
-map("n", "n", "nzzzv")
-map("n", "N", "Nzzzv")
+map("n", "<C-d>", "16jzz")
+map("n", "<C-u>", "16kzz")
 
 -- replace word
+map("n", "<A-BS>", "daw", { desc = "Delete around word" })
 map("v", "<leader>rc", "c<esc>dd", { desc = "Cut lines" })
-map("n", "<leader>rw", "daw", { desc = "Delete around word" })
-map("n", "<leader>re", "caw", { desc = "Replace around word" })
+map("n", "<leader>rw", "caw", { desc = "Replace around word" })
 map("n", "<leader>rs", ":%s/", { desc = "Search and replace" })
-
--- save file
-map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr>", { desc = "Save file" })
+map("n", "<leader>rr", "<cmd>so %<cr>", { noremap = true, desc = "Reload vimrc", silent = true })
 
 -- typescript
 map("n", "<leader>tu", "<cmd>TypescriptRemoveUnused<cr>", { desc = "Remove unused imports" })
 map("n", "<leader>ti", "<cmd>TypescriptAddMissingImports<cr>", { desc = "Add Missing Imports" })
+
+-- save file
+map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr>", { desc = "Save file" })
 
 -- move
 map("n", "<A-h>", '<cmd>lua require("tmux").move_left()<cr>')
@@ -32,6 +40,14 @@ map("n", "<A-n>", '<cmd>lua require("tmux").resize_left()<cr>')
 map("n", "<A-m>", '<cmd>lua require("tmux").resize_bottom()<cr>')
 map("n", "<A-,>", '<cmd>lua require("tmux").resize_top()<cr>')
 map("n", "<A-.>", '<cmd>lua require("tmux").resize_right()<cr>')
+map("n", "<C-h>", '<cmd>lua require("tmux").move_left()<cr>')
+map("n", "<C-j>", '<cmd>lua require("tmux").move_bottom()<cr>')
+map("n", "<C-k>", '<cmd>lua require("tmux").move_top()<cr>')
+map("n", "<C-l>", '<cmd>lua require("tmux").move_right()<cr>')
+map("n", "<C-n>", '<cmd>lua require("tmux").resize_left()<cr>')
+map("n", "<C-m>", '<cmd>lua require("tmux").resize_bottom()<cr>')
+map("n", "<C-,>", '<cmd>lua require("tmux").resize_top()<cr>')
+map("n", "<C-.>", '<cmd>lua require("tmux").resize_right()<cr>')
 
 -- copy and paste
 map({ "v", "n", "x" }, "x", '"_x')
@@ -77,3 +93,9 @@ map("n", "glm", "<CMD>Glance implementations<CR>", { desc = "Implementations" })
 
 -- splitjoin
 map("n", "gj", "<CMD>TSJToggle<CR>", { desc = "Toggle node under cursor" })
+
+-- treehopper
+map("n", "<leader>h", "<cmd>lua require('tsht').nodes()<CR>", { desc = "Show places to hop" })
+
+-- twilight
+map("n", "<leader>ct", "<cmd>Twilight<cr>", { desc = "Toggle Twilight" })
