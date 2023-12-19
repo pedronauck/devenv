@@ -90,11 +90,11 @@ return {
         -- },
       },
       pickers = {
-        -- find_files = {
-        --   hidden = true,
-        --   previewer = true,
-        --   layout_config = layout_config,
-        -- },
+        find_files = {
+          hidden = true,
+          previewer = true,
+          layout_config = layout_config,
+        },
         -- git_files = {
         --   hidden = true,
         --   previewer = true,
@@ -122,7 +122,7 @@ return {
         --   layout_config = layout_config,
         -- },
         treesitter = {
-          -- show_line = false,
+          show_line = false,
           -- sorting_strategy = nil,
           -- layout_config = layout_config,
           symbols = {

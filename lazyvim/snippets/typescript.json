@@ -14,5 +14,28 @@
       "// $1",
       "// ----------------------------------------------------------------------------"
     ]
+  },
+  "Storybook Component": {
+    "prefix": "story",
+    "body": [
+      "import type { Meta, StoryObj } from '@storybook/react';",
+      "",
+      "import { $1 } from './$1';",
+      "",
+      "const meta: Meta<typeof $1> = {",
+      "  title: '$2',",
+      "  component: $1,",
+      "};",
+      "",
+      "export default meta;",
+      "type Story = StoryObj<typeof $1>;",
+      "",
+      "export const Usage: Story = {",
+      "  render: () => (",
+      "    $3",
+      "  ),",
+      "};"
+    ],
+    "description": "Snippet for a generic Storybook Component with placeholders for component name, story title, and render content"
   }
 }

@@ -1,12 +1,5 @@
 return {
   "neovim/nvim-lspconfig",
-  ---@class PluginLspOpts
-  opts = {
-    ---@type lspconfig.options
-    servers = {
-      prismals = {},
-    },
-  },
   init = function()
     local lspconfig = require("lspconfig")
     local configs = require("lspconfig.configs")
@@ -16,13 +9,9 @@ return {
       default_config = {
         cmd = { "forc-lsp" },
         filetypes = { "sway" },
-        on_attach = function()
-          on_attach()
-        end,
         init_options = {
           -- Any initialization options
           logging = { level = "trace" },
-          inlayHints = { maxLength = 25, renderColons = true, typeHints = true },
           trace = { extension = true, server = "messages" },
         },
         root_dir = function(fname)
@@ -33,6 +22,5 @@ return {
     }
 
     lspconfig.sway_lsp.setup({})
-    lspconfig.astro.setup({})
   end,
 }
