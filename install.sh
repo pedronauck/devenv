@@ -9,16 +9,12 @@ brew install nvm neofetch htop wget node neovim ripgrep tmux lua fzf fd exa bat 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # fish
-ln -sf $path/fish ~/.config/fish
+# ln -sf $path/fish ~/.config/fish
 
 # neovim
 mkdir -p ~/.config
-ln -sf $path/nvim ~/.config/nvim
-ln -sf $path/lazyvim ~/.config/lazyvim
-
-# zellij
-ln -sf $path/zellij ~/.config/zellij
-cargo install --locked zellij
+# ln -sf $path/nvim ~/.config/nvim
+ln -sf $path/lazyvim ~/.config/nvim
 
 # tmux
 ln -sf $path/tmux/.tmux.conf ~/.tmux.conf

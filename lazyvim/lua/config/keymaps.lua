@@ -10,6 +10,9 @@ vim.keymap.set("n", "<A-BS>", "daw", { desc = "Delete around word" })
 vim.keymap.set("v", "<leader>rc", "c<esc>dd", { desc = "Cut lines" })
 vim.keymap.set("n", "<leader>rw", "caw", { desc = "Replace around word" })
 vim.keymap.set("n", "<leader>rs", ":%s/", { desc = "Search and replace" })
+
+-- reload
+vim.keymap.set("n", "<leader>rl", "<cmd>LspRestart<cr>", { desc = "Restart LSP" })
 vim.keymap.set(
   "n",
   "<leader>rr",
