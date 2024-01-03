@@ -3,12 +3,13 @@
 path=$(pwd)
 
 # dependencies
-brew install nvm neofetch htop wget node neovim ripgrep tmux lua fzf fd exa bat zoxide ffmpeg lazygit tree-sitter
+brew install nvm neofetch htop wget neovim ripgrep tmux lua fzf fd exa bat zoxide ffmpeg lazygit tree-sitter fontforge lazydocker youtube-dl
 
 # rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # fish
+# TODO: link this is not working
 # ln -sf $path/fish ~/.config/fish
 
 # neovim
@@ -27,3 +28,6 @@ $(brew --prefix)/opt/fzf/install
 mkdir -p "$(bat --config-dir)/themes"
 ln -sf $path/bat/*.tmTheme ~/.config/bat/themes
 bat cache --build
+
+# wezterm
+ln -sf $path/.wezterm.lua ~/.wezterm.lua
